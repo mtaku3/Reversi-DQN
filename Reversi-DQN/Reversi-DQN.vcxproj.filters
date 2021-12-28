@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Reversi-DQN.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="creversi-master\creversi_cpp\bit_manipulations.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -37,6 +34,9 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="creversi-master\creversi_cpp\value.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="benchmark.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>

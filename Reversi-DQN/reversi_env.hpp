@@ -8,8 +8,8 @@ using namespace std;
 vector<int> GenerateLegalMoveList(__Board bd) {
 	__LegalMoveList lml = __LegalMoveList(bd);
 	vector<int> legalMoves(lml.size());
-	for (auto value : legalMoves) {
-		value = lml.next();
+	for (int i = 0; i < legalMoves.size(); i++) {
+		legalMoves[i] = lml.next();
 	}
 	return legalMoves;
 }
@@ -18,14 +18,18 @@ class ReversiEnv {
 public:
 	__Board board;
 
+	bool is_agent_black;
+
 	struct QData {
 		__Board board;
 		double reward;
 		bool done;
 	};
 
-	ReversiEnv() {
+	ReversiEnv(bool is_agent_black) {
 		board = __Board();
+
+		this->is_agent_black = is_agent_black;
 	}
 
 	__Board reset() {
@@ -40,7 +44,8 @@ public:
 		auto done = board.is_game_over();
 		double reward;
 		if (done) {
-			reward = board.diff_num() < 0 ? 1.0 : (board.diff_num() > 0 ? -1.0 : 0.0);
+			reward = 0 < board.diff_num() ? 1.0 : (board.diff_num() < 0 ? -1.0 : 0.0);
+			if (!is_agent_black) reward *= -1;
 		}
 		else {
 			reward = 0;
